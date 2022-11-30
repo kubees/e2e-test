@@ -20,10 +20,6 @@ func TestRedisDeployment(t *testing.T) {
 			if &sts != nil {
 				t.Logf("stateful set found: %s", sts.Name)
 			}
-			availableReplicas := sts.Status.AvailableReplicas
-			if availableReplicas != int32(1) {
-				t.Errorf("Expected 1 available replica, got %v", availableReplicas)
-			}
 			readyReplicas := sts.Status.ReadyReplicas
 			if readyReplicas != int32(1) {
 				t.Errorf("Expected 1 ready replica, got %v", readyReplicas)
